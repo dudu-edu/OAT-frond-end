@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Taxas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .calculator {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="calculator">
+        <h2>Cálculo de Taxas</h2>
+        <div class="form-group">
+            <label for="amount">Valor:</label>
+            <input type="number" class="form-control" id="amount" placeholder="Digite o valor">
+        </div>
+        <div class="form-group">
+            <label for="rate">Taxa (%):</label>
+            <input type="number" class="form-control" id="rate" placeholder="Digite a taxa">
+        </div>
+        <button class="btn btn-primary" id="calculateBtn">Calcular</button>
+        <div class="result" id="result"></div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        const rate = parseFloat(document.getElementById('rate').value);
+
+        if (!isNaN(amount) && !isNaN(rate)) {
+            const tax = (amount * rate) / 100;
+            const total = amount + tax;
+            document.getElementById('result').innerHTML = `Taxa: R$ ${tax.toFixed(2)}<br>Total: R$ ${total.toFixed(2)}`;
+        } else {
+            document.getElementById('result').innerHTML = 'Por favor, insira valores válidos.';
+        }
+    });
+</script>
+
+</body>
+</html>
